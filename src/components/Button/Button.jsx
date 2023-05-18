@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 
-const Button = ({ children }) => {
-  return <button>{children}</button>;
-};
-
-export default Button;
+export default function Button(props) {
+  return <button>{props.children}</button>;
+}
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,

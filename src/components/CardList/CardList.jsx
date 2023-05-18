@@ -1,26 +1,26 @@
 import PropTypes from "prop-types";
 import { Link, useLocation } from "react-router-dom";
 
-import { List, Item } from "./CardList.styled";
+import CardItem from "./CardItem/CardItem";
+import { List } from "./CardList.styled";
 
 const CardList = ({ cards }) => {
   const location = useLocation();
+
   return (
-    <>
-      <List>
-        {cards.map(({ id, user, tweets, followers, avatar }) => (
-          <Item
-            key={id}
-            user={user}
-            tweets={tweets}
-            followers={followers}
-            avatar={avatar}
-          >
-            <Link to={`/tweets`} state={{ from: location }}></Link>
-          </Item>
-        ))}
-      </List>
-    </>
+    <List>
+      {cards.map(({ id, user, tweets, followers, avatar }) => (
+        <CardItem
+          key={id}
+          user={user}
+          tweets={tweets}
+          followers={followers}
+          avatar={avatar}
+        >
+          <Link to={`/tweets`} state={{ from: location }}></Link>
+        </CardItem>
+      ))}
+    </List>
   );
 };
 

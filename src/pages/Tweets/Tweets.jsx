@@ -21,7 +21,7 @@ const Tweets = () => {
       .catch((error) => console.log(error.message))
       .finally(() => setIsLoading(false));
   }, []);
-  console.log(cards);
+  //   console.log(cards);
   return (
     <>
       {isLoading && <Loader />}
