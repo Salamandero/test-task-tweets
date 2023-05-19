@@ -12,6 +12,7 @@ const CardList = ({ cards }) => {
       {cards.map(({ id, user, tweets, followers, avatar }) => (
         <CardItem
           key={id}
+          id={id}
           user={user}
           tweets={tweets}
           followers={followers}

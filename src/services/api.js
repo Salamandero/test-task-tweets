@@ -7,7 +7,6 @@ export async function fetchAllTweets() {
   return res.data;
 }
 
-export async function fetchTweetUpdate(cardId) {
-  const res = await axios.post(`/${cardId}`);
-  return res.data;
+export async function fetchTweetUpdate(cardId, changeTweet) {
+  await axios.put(`/${cardId}`, { ...changeTweet });
 }
