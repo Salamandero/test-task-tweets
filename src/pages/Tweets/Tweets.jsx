@@ -26,10 +26,10 @@ const Tweets = () => {
     <>
       {isLoading && <Loader />}
       {cards.length > 0 && (
-        <>
+        <section>
           <Title>Choice to connect</Title>
           <CardList cards={cards} />
-        </>
+        </section>
       )}
     </>
   );
