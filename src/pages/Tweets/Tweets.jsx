@@ -9,15 +9,13 @@ const Tweets = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
   const backLinkHref = location.state?.from ?? "/";
-  // const [pageNumber, setpageNumber] = useState(1);
+
   const [showLoadMore, setShowLoadMore] = useState(true);
   const [countCards, setCountCards] = useState(Number(3));
 
-  // URLSearchParams.set({ page: 1, limit: 6 });
   useEffect(() => {
     setIsLoading(true);
     fetchAllTweets(countCards)
-      // fetchAllTweets()
       .then(setCards)
       .catch((error) => console.log(error.message))
       .finally(() => setIsLoading(false));
