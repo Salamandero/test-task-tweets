@@ -1,4 +1,5 @@
 import { WrapperNoInfo } from "./NotFound.styled";
+
 const NotFound = () => {
   return (
     <WrapperNoInfo>
