@@ -9,6 +9,9 @@ export const WrapperCardBg = styled.li`
   width: 380px;
   height: 460px;
 
+  margin-left: auto;
+  margin-right: auto;
+
   background: linear-gradient(
     114.99deg,
     #471ca9 -0.99%,

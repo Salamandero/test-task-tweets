@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { fetchTweetUpdate } from "../../../services/api";
 import Loader from "../../Loader/Loader";
+import noImg from "../../../assets/noImg.png";
 
 import {
   WrapperCardBg,
@@ -55,7 +56,11 @@ const CardItem = ({ id, user, tweets, followers, avatar }) => {
       {!isLoading && (
         <WrapperCardBg>
           <WrapperCard>
-            <ImgTweet src={avatar} alt={user} loading="lazy" />
+            {avatar ? (
+              <ImgTweet src={avatar} alt={user} loading="lazy" />
+            ) : (
+              <ImgTweet src={noImg} alt={user} loading="lazy" />
+            )}
             <TextTweet>{tweets.toLocaleString()} tweets</TextTweet>
             <TextFollower>
               {changeFollowers.toLocaleString()} followers
