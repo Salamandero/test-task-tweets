@@ -3,27 +3,34 @@ import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
 import { fetchAllTweets } from "../../services/api";
 import CardList from "../../components/CardList/CardList";
-import { Title, BackLink } from "./Tweets.styled";
+import { Title, BackLink, LoadMoreBtn } from "./Tweets.styled";
 
 const Tweets = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [cards, setCards] = useState([]);
   const backLinkHref = location.state?.from ?? "/";
   // const [pageNumber, setpageNumber] = useState(1);
-  const [showLoadMore, setShowLoadMore] = useState(false);
+  const [showLoadMore, setShowLoadMore] = useState(true);
+  const [countCards, setCountCards] = useState(Number(3));
 
+  // URLSearchParams.set({ page: 1, limit: 6 });
   useEffect(() => {
     setIsLoading(true);
-    fetchAllTweets()
+    fetchAllTweets(countCards)
+      // fetchAllTweets()
       .then(setCards)
       .catch((error) => console.log(error.message))
       .finally(() => setIsLoading(false));
-    cards.length > 3 ? setShowLoadMore(true) : setShowLoadMore(false);
-  }, []);
 
-  console.log("====================================");
-  console.log(cards.length);
-  console.log("====================================");
+    Number(cards.length) === Number(countCards)
+      ? setShowLoadMore(true)
+      : setShowLoadMore(false);
+  }, [cards.length, countCards]);
+
+  const handlePagination = () => {
+    setCountCards((prevState) => prevState + 3);
+  };
+
   return (
     <>
       <BackLink to={backLinkHref}>Go back</BackLink>
@@ -32,7 +39,9 @@ const Tweets = () => {
         <section>
           <Title>Choice to connect</Title>
           <CardList cards={cards} />
-          {showLoadMore && <button>LoadMore</button>}
+          {showLoadMore && (
+            <LoadMoreBtn onClick={handlePagination}>LoadMore</LoadMoreBtn>
+          )}
         </section>
       )}
     </>
