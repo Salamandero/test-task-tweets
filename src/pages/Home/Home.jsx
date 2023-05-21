@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <section>
       <Title>Tweets - expands the space of communication</Title>
-      <LinktoTweets to={`/tweets`}>Start</LinktoTweets>
+      <LinktoTweets to="/tweets">Start</LinktoTweets>
     </section>
   );
 };
